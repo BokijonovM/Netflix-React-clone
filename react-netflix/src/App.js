@@ -1,17 +1,15 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Section from './components/Section'
-
-
+import NavBar from './component/Navbar';
 
 function App() {
   return (
-    <>
-      <Section title="Harry Potter"></Section>
-      <Section title="Lord of the Rings"></Section>
-      <Section title="Horror"></Section>
-      <Section title="Action"></Section>
-    </>
+    <div className="App">
+      <NavBar />
+      <header className="App-header">
+        <TvShows />
+      </header>
+    </div>
   );
 }
 
