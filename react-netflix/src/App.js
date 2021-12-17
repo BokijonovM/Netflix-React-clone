@@ -1,14 +1,17 @@
-import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import TvShows from "./components/TvShows";
+import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Section from './components/Section'
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <TvShows />
-      </header>
-    </div>
+    <>
+      <Section title="Harry Potter"></Section>
+      <Section title="Lord of the Rings"></Section>
+      <Section title="Horror"></Section>
+      <Section title="Action"></Section>
+    </>
   );
 }
 
