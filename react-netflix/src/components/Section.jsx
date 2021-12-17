@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Row } from 'react-bootstrap'
 import Loading from './Loading'
-import DisplayMovies from '../components/DisplayMovies'
+import DisplayMovies from './DisplayMovies'
 import './style.css'
 
 export default class Section extends React.Component {
