@@ -1,20 +1,22 @@
 
 import React, { Component } from 'react';
-import {Navbar, Nav, Form, FormControl, Button} from 'react-bootstrap'
+import {Navbar, Nav, Form, FormControl, Button, Image} from 'react-bootstrap'
 
 
 class NavBar extends React.Component {
     state = {
-        searchQuery:''
+        searchQuery:'',
+        moviesArr:[]
     }
 
-   performSearch = async function(e){
+   performSearch = async(e) =>{
         e.preventDefault()
         try {
             let response = await fetch("http://www.omdbapi.com/?apikey=82ebb69a&s=" + this.state.searchQuery,{
                 method:"GET"
             })
             let data = await response.json()
+            this.setState({moviesArr:data})
             console.log(data)
             
         } catch (error) {
@@ -26,7 +28,7 @@ class NavBar extends React.Component {
         return (
         <div>
                                 <Navbar  bg="dark" variant="dark" expand="lg">
-                                        <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
+                                        <Navbar.Brand href="/public/assets/netflix_logo.png"> <Image src="holder.js/100px250" fluid /></Navbar.Brand>
                                         <Navbar.Toggle aria-controls="navbarScroll" />
                                         <Navbar.Collapse id="navbarScroll">
                                             <Nav
@@ -54,6 +56,7 @@ class NavBar extends React.Component {
                                          </Form>
                                     </Navbar.Collapse>
                               </Navbar>
+                              
                
         </div>
 )    
