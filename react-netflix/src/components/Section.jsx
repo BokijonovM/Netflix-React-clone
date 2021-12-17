@@ -44,9 +44,9 @@ export default class Section extends React.Component {
             <>
 
                 <Container className="bodySectionBG px-4" fluid>
-                    <h2 className="">
+                    <h4 className="mb-n2">
                         {this.props.title} Movies
-                    </h2>
+                    </h4>
                     <Row className="row-cols-sm-2 row-cols-md-4 row-cols-lg-6 px-3 row__posters">
                         {this.state.isLoading && (<Loading></Loading>)}
 
