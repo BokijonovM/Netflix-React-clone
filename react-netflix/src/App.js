@@ -6,15 +6,15 @@ import Section from './components/Section'
 
 function App() {
   return (
-    <div className="App bg-dark">
+    <div className="App">
       <NavBar />
-      
-        <TvShows />
-        <Section title="Harry Potter"></Section>
-        <Section title="Lord of the Rings"></Section>
-        <Section title="Horror"></Section>
-        <Section title="Action"></Section>
-      
+
+      <TvShows />
+      <Section title="Harry Potter"></Section>
+      <Section title="Lord of the Rings"></Section>
+      <Section title="Horror"></Section>
+      <Section title="Action"></Section>
+
 
     </div>
   );
