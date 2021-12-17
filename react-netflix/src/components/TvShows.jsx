@@ -9,7 +9,7 @@ render(){
 <Row>
     <Col md={3} className="d-inline-block" >
        
-          <h3 class="mr-5 mb-5 text-white">TV Shows</h3>
+          <h3 class="mr-5 mb-5 text-white">{this.props.title}</h3>
         
 
     </Col>
