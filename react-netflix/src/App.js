@@ -6,7 +6,7 @@ import Section from './components/Section'
 
 function App() {
   return (
-    <div className="App">
+    <div className="App bg-dark">
       <NavBar />
       
         <TvShows />
