@@ -8,3 +8,13 @@
     display: none;
 }
 
+
+.img-poster{
+    width: 100%;
+    transition: transform 450ms;
+    cursor: pointer;
+}
+
+.img-poster:hover{
+    transform: scale(1.08);
+}

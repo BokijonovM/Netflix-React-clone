@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Card, } from 'react-bootstrap'
-
+import './style.css'
 
 
 export default class CardSearch extends Component {
@@ -15,7 +15,7 @@ export default class CardSearch extends Component {
         this.setState({
             showPrice: null,
             btnColor: 'primary',
-            cardClass: "px-1 py-4 m-0 border-0 w-100 bg-transparent",
+            cardClass: "px-1 py-4 mb-4 m-0 border-0 w-100 bg-transparent",
             isClicked: !this.state.isClicked
 
         })
@@ -32,8 +32,9 @@ export default class CardSearch extends Component {
     render() {
         return (
             <Card className={this.state.cardClass}>
-                <Card.Img onClick={(e) => this.commentsDisplay()} className=" align-self-center" variant="top" style={{
+                <Card.Img onClick={(e) => this.commentsDisplay()} className="img-poster align-self-center" variant="top" style={{
                     height: "300px",
+                    width: "180px",
                     objectFit: "cover",
 
                 }} src={this.props.movie.Poster} />

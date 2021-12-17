@@ -1,7 +1,6 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Section from './components/Section'
-import { Row } from 'react-bootstrap'
 
 
 
