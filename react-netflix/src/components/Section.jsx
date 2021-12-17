@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Row } from 'react-bootstrap'
 import Loading from './Loading'
-import CardSearch from './CardSearch'
+import DisplayMovies from '../components/DisplayMovies'
 
 export default class Section extends React.Component {
     state = {
@@ -49,7 +49,8 @@ export default class Section extends React.Component {
                     <Row className="row-cols-sm-2 row-cols-md-4 row-cols-lg-6 px-3">
                         {this.state.isLoading && (<Loading></Loading>)}
 
-                        {this.state.movieList.slice(0, 6).map(movie => <CardSearch key={movie.imdbID} movie={movie}></CardSearch>)}
+                      
+                            <DisplayMovies movieList ={this.state.movieList.slice(0, 6)}/>
 
 
                     </Row>
