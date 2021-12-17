@@ -32,9 +32,10 @@ export default class CardSearch extends Component {
     render() {
         return (
             <Card className={this.state.cardClass}>
-                <Card.Img onClick={(e) => this.commentsDisplay()} className="imageFix align-self-center" variant="top" style={{
+                <Card.Img onClick={(e) => this.commentsDisplay()} className=" align-self-center" variant="top" style={{
                     height: "300px",
-                    objectFit: "cover"
+                    objectFit: "cover",
+
                 }} src={this.props.movie.Poster} />
                 <div className="position-relative">
                     <Card.Body className="d-flex flex-column pb-0 pt-2 px-0 justify-content-between bgMod w-100 position-absolute">

@@ -1,0 +1,10 @@
+.row__posters{
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-y: hidden;
+    overflow-x: scroll;
+}
+.row__posters::-webkit-scrollbar{
+    display: none;
+}
+

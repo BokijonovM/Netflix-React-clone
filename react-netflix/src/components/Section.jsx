@@ -2,6 +2,7 @@ import React from 'react'
 import { Container, Row } from 'react-bootstrap'
 import Loading from './Loading'
 import DisplayMovies from '../components/DisplayMovies'
+import './style.css'
 
 export default class Section extends React.Component {
     state = {
@@ -46,11 +47,11 @@ export default class Section extends React.Component {
                     <h2 className="">
                         {this.props.title} Movies
                     </h2>
-                    <Row className="row-cols-sm-2 row-cols-md-4 row-cols-lg-6 px-3">
+                    <Row className="row-cols-sm-2 row-cols-md-4 row-cols-lg-6 px-3 row__posters">
                         {this.state.isLoading && (<Loading></Loading>)}
 
-                      
-                            <DisplayMovies movieList ={this.state.movieList.slice(0, 6)}/>
+
+                        <DisplayMovies movieList={this.state.movieList} />
 
 
                     </Row>
