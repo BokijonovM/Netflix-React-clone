@@ -8,7 +8,7 @@ const MyFooter = () => {
         style={{
           display: "block",
           justifyContent: "start",
-          backgroundColor: "black",
+          backgroundColor: "#141414",
           width: "",
         }}
       >

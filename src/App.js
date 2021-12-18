@@ -16,7 +16,7 @@ function App() {
       <Section title="Marvel"></Section>
       <Section title="Lord of the Rings"></Section>
       <Section title="Horror"></Section>
-      <MyFooter style={{ margin: '0px', padding: "0px" }} />
+      <MyFooter />
 
     </div>
   );
