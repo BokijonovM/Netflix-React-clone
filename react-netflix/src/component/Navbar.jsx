@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Navbar, Nav, Form, FormControl, Button, Image } from 'react-bootstrap'
-// import CardSearch from '../component/CardSearch'
+import { Navbar, Nav, Form, FormControl, Button, Image, Row, Col, Container } from 'react-bootstrap'
+import DisplayMovies from '../components/DisplayMovies'
 import brand from '../brand.png';
 import user from '../user.png';
 
@@ -9,17 +9,17 @@ import user from '../user.png';
 class NavBar extends React.Component {
     state = {
         searchQuery: '',
-        moviesArr: []
+        movieList: []
     }
 
     performSearch = async (e) => {
         e.preventDefault()
         try {
-            let response = await fetch("http://www.omdbapi.com/?apikey=82ebb69a&s=" + this.state.searchQuery.toLowerCase(), {
+            let response = await fetch("http://www.omdbapi.com/?apikey=82ebb69a&s=" + this.state.searchQuery, {
                 method: "GET"
             })
             let data = await response.json()
-            this.setState({ moviesArr: data })
+            this.setState({ movieList: data })
             console.log(data)
 
 
@@ -53,7 +53,7 @@ class NavBar extends React.Component {
                                 <FormControl type="text" placeholder="Search" className="mr-sm-2"
                                     value={this.state.searchQuery}
                                     onChange={(e) => this.setState({ searchQuery: e.target.value })} />
-                                <Nav.Link href="#features" onClick={this.performSearch}><i class="bi bi-search"></i></Nav.Link>
+                                <Nav.Link href="#features" onClick={this.performSearch}><i className="bi bi-search"></i></Nav.Link>
                                 <div className="d-flex align-items-center">
                                     <Nav.Link href="#features">KIDS</Nav.Link>
                                     <Nav.Link href="#bellIcon"><i className=" text-white bi bi-bell-fill"></i> </Nav.Link>
@@ -63,8 +63,13 @@ class NavBar extends React.Component {
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>
-
-                {/* <CardSearch movieList={this.state.moviesArr}/> */}
+               <Container>
+                   <Row>
+                       <Col>
+                       <DisplayMovies movieList={this.state.movieList} />
+                       </Col>
+                   </Row>
+               </Container>
             </div>
         )
     }

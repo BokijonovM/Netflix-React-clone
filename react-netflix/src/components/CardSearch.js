@@ -31,6 +31,7 @@ export default class CardSearch extends Component {
 
     render() {
         return (
+            
             <Card className={this.state.cardClass}>
                 <Card.Img onClick={(e) => this.commentsDisplay()} className="img-poster align-self-center" variant="top" src={this.props.movie.Poster} />
                 <div className="position-relative">
@@ -38,6 +39,7 @@ export default class CardSearch extends Component {
                         {this.state.isClicked && <Card.Title className="mb-2 px-2"> <h6>{this.props.movie.Title}</h6></Card.Title>}
                     </Card.Body>
                 </div>
+                <commentList id="this.props.moovie.imdbID"/>
             </Card>
         )
     }

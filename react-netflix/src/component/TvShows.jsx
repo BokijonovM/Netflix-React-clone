@@ -6,7 +6,7 @@ render(){
     return(
 
 
-<Row>
+<Row className="bg-dark mt-3">
     <Col md={2}  className="d-flex justify-content-center" >
        
           <h3 class="  text-white ">TV Shows</h3>

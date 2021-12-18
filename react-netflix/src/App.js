@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App bg-dark">
       <NavBar />
-      
+        
         <TvShows />
         <Section title="Harry Potter"></Section>
         <Section title="Lord of the Rings"></Section>
