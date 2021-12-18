@@ -47,7 +47,7 @@ export default class Section extends React.Component {
                     <h4 className="mb-n2 mt-2">
                         {this.props.title} Movies
                     </h4>
-                    <Row className="row-cols-sm-2 row-cols-md-4 row-cols-lg-6 px-3 row__posters">
+                    <Row className="row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-6 px-3 row__posters">
                         {this.state.isLoading && (<Loading></Loading>)}
 
 

@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import { Navbar, Nav, Form, FormControl, Button, Image, Row, Col, Container } from 'react-bootstrap'
-import MyFooter from "./MyFooter";
-import TvShows from './TvShows'
-import Section from './Section'
 import DisplayMovies from '../components/DisplayMovies'
 import brand from '../brand.png';
 import user from '../user.png';
@@ -12,24 +9,21 @@ import user from '../user.png';
 class NavBar extends React.Component {
     state = {
         searchQuery: '',
-        movieList: []
+        movieList: [],
+        display:false
     }
 
-    performSearch = async (e) => {
-        e.preventDefault()
-        try {
-            let response = await fetch("http://www.omdbapi.com/?apikey=82ebb69a&s=" + this.state.searchQuery, {
-                method: "GET"
-            })
-            let data = await response.json()
-            this.setState({ movieList: data })
-            console.log(data)
-
-
-        } catch (error) {
-            console.log(error)
+    SearchStringHandler = (e) => {
+        
+        if(e===13){
+            this.props.showSearchResult(this.state.searchQuery)
+        } else {
+            this.setState({searchQuery:e.target.value})
         }
+      
     }
+
+  
 
     render() {
         return (
@@ -54,9 +48,11 @@ class NavBar extends React.Component {
                         <Nav className="d-flex align-items-center">
                             <Form inline className="text-center">
                                 <FormControl type="text" placeholder="Search" className="mr-sm-2"
-                                    value={this.state.searchQuery}
-                                    onChange={(e) => this.setState({ searchQuery: e.target.value })} />
-                                <Nav.Link href="#features" onClick={this.performSearch}><i className="bi bi-search"></i></Nav.Link>
+                                    style={{display:this.state.display? "block":"none",borderRadius:"25px",height:"30px"}}
+                                    onKeyDown={this.SearchStringHandler}
+                                    onChange={this.SearchStringHandler}
+                                    value={this.state.searchQuery}  />
+                                <Nav.Link href="#features" onClick={()=>this.setState({display: !this.state.display})}><i className="bi bi-search"></i></Nav.Link>
                                 <div className="d-flex align-items-center">
                                     <Nav.Link href="#features">KIDS</Nav.Link>
                                     <Nav.Link href="#bellIcon"><i className=" text-white bi bi-bell-fill"></i> </Nav.Link>
@@ -66,16 +62,7 @@ class NavBar extends React.Component {
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>
-               <Container fluid>
-                   
-                       <DisplayMovies movieList={this.state.movieList} />
-                            <TvShows />
-                            <Section title="Harry Potter"></Section>
-                            <Section title="Marvel"></Section>
-                            <Section title="Lord of the Rings"></Section>
-                            <Section title="Horror"></Section>
-                            <MyFooter />
-               </Container>
+          
             </div>
         )
     }
