@@ -1,8 +1,8 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import MyFooter from "./components/MyFooter";
-import NavBar from './component/Navbar';
-import TvShows from './component/TvShows'
+import NavBar from './components/Navbar';
+import TvShows from './components/TvShows'
 import Section from './components/Section'
 
 
