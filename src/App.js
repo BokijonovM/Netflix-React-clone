@@ -8,7 +8,7 @@ import Section from './components/Section'
 
 function App() {
   return (
-    <div className="App m-0 p-0">
+    <div className="App">
       <NavBar />
 
       <TvShows />
@@ -16,7 +16,7 @@ function App() {
       <Section title="Marvel"></Section>
       <Section title="Lord of the Rings"></Section>
       <Section title="Horror"></Section>
-      <MyFooter />
+      <MyFooter style={{ margin: '0px', padding: "0px" }} />
 
     </div>
   );
