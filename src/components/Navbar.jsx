@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Navbar, Nav, Form, FormControl, Button, Image, Row, Col, Container } from 'react-bootstrap'
+import MyFooter from "./MyFooter";
+import TvShows from './TvShows'
+import Section from './Section'
 import DisplayMovies from '../components/DisplayMovies'
 import brand from '../brand.png';
 import user from '../user.png';
@@ -30,8 +33,8 @@ class NavBar extends React.Component {
 
     render() {
         return (
-            <div>
-                <Navbar bg="dark" variant="dark" expand="lg" fixed>
+            <div fixed>
+                <Navbar bg="dark" variant="dark" expand="lg" >
                     <Navbar.Brand href=""><Image src={brand} style={{ width: "100px" }} fluid /> </Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
@@ -63,12 +66,15 @@ class NavBar extends React.Component {
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>
-               <Container>
-                   <Row>
-                       <Col>
+               <Container fluid>
+                   
                        <DisplayMovies movieList={this.state.movieList} />
-                       </Col>
-                   </Row>
+                            <TvShows />
+                            <Section title="Harry Potter"></Section>
+                            <Section title="Marvel"></Section>
+                            <Section title="Lord of the Rings"></Section>
+                            <Section title="Horror"></Section>
+                            <MyFooter />
                </Container>
             </div>
         )

@@ -6,7 +6,7 @@ class TvShows extends Component {
     return (
 
 
-      <Row>
+      <Row className="my-4">
         <Col md={2} className="d-flex justify-content-center mt-3" >
 
           <h3 class="  text-white ">TV Shows</h3>
