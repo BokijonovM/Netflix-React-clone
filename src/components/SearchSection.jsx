@@ -10,8 +10,9 @@ export default class Section extends React.Component {
         isLoading: true,
         errorHandle: false
     }
-
-    componentDidMount = async () => {
+    
+    
+    SearchFunction = async () => {
         try {
 
             let movieRes = await fetch('http://www.omdbapi.com/?apikey=15c1c355&s=' + this.props.title)
@@ -42,7 +43,9 @@ export default class Section extends React.Component {
         
         return (
             <>
-
+                if(this.props.title?){
+                    this.SearchFunction()
+                    }      
                 <Container className="bodySectionBG px-4" fluid>
                     <h4 className="mb-n2 mt-2">
                         {this.props.title} Movies

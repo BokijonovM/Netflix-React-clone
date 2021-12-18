@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Navbar, Nav, Form, FormControl, Button, Image, Row, Col, Container } from 'react-bootstrap'
-import DisplayMovies from '../components/DisplayMovies'
+import Section from './Section'
 import brand from '../brand.png';
 import user from '../user.png';
 
@@ -17,6 +17,7 @@ class NavBar extends React.Component {
         
         if(e===13){
             this.props.showSearchResult(this.state.searchQuery)
+            return this.state.searchQuery
         } else {
             this.setState({searchQuery:e.target.value})
         }
@@ -62,7 +63,8 @@ class NavBar extends React.Component {
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>
-          
+                <Section title={this.state.searchQuery}/>
+               
             </div>
         )
     }

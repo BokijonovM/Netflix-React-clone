@@ -19,7 +19,7 @@ class CommentList extends Component{
                         
                     
                      
-                            ComponentDidMount = async() =>{
+                            componentDidMount = async() =>{
                                 try {
                                     let response = await fetch("https://striveschool-api.herokuapp.com/api/comments/" + this.props.id, {
                                     method:"GET",   
