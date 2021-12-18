@@ -1,5 +1,4 @@
 // import React from "react";
-import icons from "react-bootstrap-icons";
 import { Container, Row, Col } from "react-bootstrap";
 
 const MyFooter = () => {
