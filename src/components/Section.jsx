@@ -42,7 +42,6 @@ export default class Section extends React.Component {
 
         return (
             <>
-
                 <Container className="bodySectionBG px-4" fluid>
                     <h4 className="mb-n2 mt-2">
                         {this.props.title} Movies
@@ -52,8 +51,6 @@ export default class Section extends React.Component {
 
 
                         <DisplayMovies movieList={this.state.movieList} />
-
-
                     </Row>
 
                 </Container>
