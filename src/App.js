@@ -20,7 +20,9 @@ class App extends Component {
         })
         let data = await response.json()
         this.setState({searchResult:data})
+        this.setState({search:searchQuery})
         console.log(data)
+      
 
     } catch (error) {
         console.log(error)
@@ -34,20 +36,27 @@ class App extends Component {
       <NavBar showSearchResult ={this.showSearchResult}/>
       <TvShows />
 
+        
       {this.state.search && (
+        <>
             <Section
-              title={this.state.search}
-            />
-      )}
-            
-                
-                >
-                <Section title="Harry Potter"/>
-                <Section title="Marvel"/>
-                <Section title="Lord of the Rings"/>
-                <Section title="Horror"/>
+              heading="Search Results" title={this.state.search} />
+            </>
+      ) }
+
+            {!this.state.search &&
+             
+              (<>
+                <Section heading="Harry Potter" title="Harry Potter"/>
+                <Section heading="Marvel" title="Marvel"/>
+                <Section heading="Lord of the Rings" title="Lord of the Rings"/>
+                <Section heading="Horror" title="Horror"/>
+              </>)}
                 <MyFooter />
+                
+                
       
+              
   
       </div>
     );

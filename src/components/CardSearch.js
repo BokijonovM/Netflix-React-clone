@@ -31,8 +31,7 @@ export default class CardSearch extends Component {
 
     render() {
         return (
-            
-            <Card className={this.state.cardClass}>
+            <Card className={this.state.cardClass} style={{maxWidth:"18rem"}}>
                 <Card.Img onClick={(e) => this.commentsDisplay()} className="img-poster align-self-center" variant="top" src={this.props.movie.Poster} />
                 <div className="position-relative">
                     <Card.Body className="d-flex flex-column pb-0 pt-2 px-0 justify-content-between w-100 position-absolute">
