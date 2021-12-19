@@ -1,6 +1,8 @@
 import { Component, useState } from 'react'
 import { Card, Button} from 'react-bootstrap'
 import  Modal from 'react-bootstrap/Modal'
+import AddComment from './AddComment'
+import CommentsList from './CommentsList'
 import './style.css'
 
 
@@ -48,69 +50,19 @@ export default class CardSearch extends Component {
                         {this.state.showComments && (
                         <Modal show={true} onHide={this.hideComments}>
                                 <Modal.Header closeButton>
-                                    <Modal.Title>Comments List</Modal.Title>
+                                    <Modal.Title>Comments of {this.props.movie.Title}</Modal.Title>
                                 </Modal.Header>
 
                                 <Modal.Body>
-                                    <p>Modal body text goes here.</p>
+                                    <CommentsList id={this.props.movie.imdbId}/>
+                                    <AddComment id={this.props.movie.imdbId}/>
                                 </Modal.Body>
 
                                 <Modal.Footer>
-                                    <Button variant="secondary">Close</Button>
+                                    <Button onClick={this.hideComments} variant="secondary">Close</Button>
                                 </Modal.Footer>
                         </Modal>)}
             </Card>
         )
     }
 }
-
-   
-// import { Component, useState } from "react"
-// import CommentsArea from "./CommentArea"
-// import Modal from "react-bootstrap/Modal"
-// import "../App.css"
-
-// class MovieCard extends Component {
-//   state = {
-//     showComments: false,
-//   }
-
-//   setShowComments = (show) => {
-//     this.setState({
-//       showComments: show,
-//     })
-//   }
-
-//   showComments = () => this.setShowComments(true)
-//   hideComments = () => this.setShowComments(false)
-
-//   render() {
-//     return (
-//       <div>
-//         <img
-//           className="img-fluid w-100 movie-img"
-//           src={this.props.movie.Poster}
-//           alt={this.props.movie.Title}
-//           onClick={this.showComments}
-//         />
-//         {this.state.showComments && (
-//           <Modal show={true} onHide={this.hideComments}>
-//             <Modal.Header closeButton>
-//               <Modal.Title>Modal title</Modal.Title>
-//             </Modal.Header>
-
-//             <Modal.Body>
-//               <CommentsArea id={this.props.movie.imdbID} />
-//             </Modal.Body>
-
-//             <Modal.Footer>
-//               {/* <AddComment fetchComments={this.reload} id={this.props.asin} /> */}
-//             </Modal.Footer>
-//           </Modal>
-//         )}
-//       </div>
-//     )
-//   }
-// }
-
-// export default MovieCard

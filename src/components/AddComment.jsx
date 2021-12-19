@@ -24,7 +24,7 @@ class AddComment extends Component {
     handleSubmit = async (event) => {
         event.preventDefault()
         try {
-            let response = await fetch("https://striveschool-api.herokuapp.com/api/comments/" + this.props.asin, {
+            let response = await fetch("https://striveschool-api.herokuapp.com/api/comments/" + this.props.id, {
                 method: "POST",
                 body: JSON.stringify(this.state.comments),
                 headers: {
@@ -33,31 +33,42 @@ class AddComment extends Component {
                 }
             })
             let data = await response.json()
+            this.setState({comments:data})
+            if(response.OK){
+                this.setState({comments:{
+                    comment: "",
+                    rate: "",
+                    elementId: this.props.id
+                }})
+                alert("Comments Submitted")
+            }
         } catch (error) {
             console.log(error)
         }
     }
 
 
+  
 
     render() {
         return (
 
-            <Form onSubmit={this.handleSubmit}>
+            <div onSubmit={this.handleSubmit}>
+
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                    <Form.Label>Example textarea</Form.Label>
-                    <Form.Control as="textarea" rows={3} value={this.state.comments.comment}
-                        onChange={e => this.handleInput("comment", e.target.value)} />
+                    <Form.Control as="textarea" rows={2} value={this.state.comments.comment}
+                        onChange={e => this.handleInput("comment", e.target.value)} placeholder="Add Comment"/>
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
-                    <Form.Label>Rate the book</Form.Label>
-                    <Form.Control type="number" placeholder="Rating" min="1" max="5" value={this.state.comments.rate}
-                        onChange={e => this.handleInput("rate", e.target.value)} />
-                </Form.Group>
+                <Form.Check inline label="2" name="group" type="radio" value="2" id="inline-radio-2" onClick={e => this.handleInput("rate", e.target.value)}/>
+                <Form.Check inline label="1" name="group" type="radio" value="1" id="inline-radio-1" onClick={e => this.handleInput("rate", e.target.value)}/>
+                <Form.Check inline label="3" name="group" type="radio" value="3" id="inline-radio-3" onClick={e => this.handleInput("rate", e.target.value)}/>
+                <Form.Check inline label="4" name="group" type="radio" value="4" id="inline-radio-4" onClick={e => this.handleInput("rate", e.target.value)}/>
+                <Form.Check inline label="5" name="group" type="radio" value="5" id="inline-radio-5" onClick={e => this.handleInput("rate", e.target.value)}/>
+        
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                    <Button variant="primary" className="m-2"> Submit</Button>
+                    <Button variant="primary" className="m-2" onClick={(event) => this.handleSubmit}> Submit</Button>
                 </Form.Group>
-            </Form>
+            </div>
         );
     }
 }
