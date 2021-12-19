@@ -58,11 +58,6 @@ export default class Section extends React.Component {
 
                 </Container>
             </>
-
-
         )
     }
-
-
-
 }
