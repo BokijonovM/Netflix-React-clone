@@ -7,7 +7,7 @@ import './style.css'
 export default class Section extends React.Component {
     state = {
         movieList: [],
-        isLoading: true,
+        isLoading: false,
         errorHandle: false
     }
 
@@ -39,7 +39,7 @@ export default class Section extends React.Component {
     }
 
     render() {
-        
+
         return (
             <>
 
