@@ -7,7 +7,7 @@ import './style.css'
 export default class Section extends React.Component {
     state = {
         movieList: [],
-        isLoading: true,
+        isLoading: false,
         errorHandle: false
     }
 
@@ -39,10 +39,9 @@ export default class Section extends React.Component {
     }
 
     render() {
-        
+
         return (
             <>
-
                 <Container className="bodySectionBG px-4" fluid>
                     <h4 className="mb-n2 mt-2">
                         {this.props.heading} Movies
@@ -52,17 +51,10 @@ export default class Section extends React.Component {
 
 
                         <DisplayMovies movieList={this.state.movieList} />
-
-
                     </Row>
 
                 </Container>
             </>
-
-
         )
     }
-
-
-
 }
