@@ -35,10 +35,10 @@ export default class CardSearch extends Component {
                 <Card.Img onClick={(e) => this.commentsDisplay()} className="img-poster align-self-center" variant="top" src={this.props.movie.Poster} />
                 <div className="position-relative">
                     <Card.Body className="d-flex flex-column pb-0 pt-2 px-0 justify-content-between w-100 position-absolute">
-                        {this.state.isClicked && <Card.Title className="mb-2 px-2"> <h6>{this.props.movie.Title}</h6></Card.Title>}
+                        {this.state.isClicked && <Card.Title className="mb-2 px-2"> <h6>{this.props.movie.Title}</h6> <h6>{this.props.movie.imdbID}</h6></Card.Title>}
                     </Card.Body>
                 </div>
-                <commentList id="this.props.moovie.imdbID"/>
+                
             </Card>
         )
     }
