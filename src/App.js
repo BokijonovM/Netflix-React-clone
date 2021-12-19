@@ -44,7 +44,7 @@ class App extends Component {
         <Section title="Harry Potter" />
         <Section title="Marvel" />
         <Section title="Lord of the Rings" />
-        <Section title="Avengers" />
+        <Section title="Horror" />
         <MyFooter />
 
 
