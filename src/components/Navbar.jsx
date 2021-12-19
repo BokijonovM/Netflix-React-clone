@@ -33,7 +33,6 @@ class NavBar extends Component {
                             <Nav.Link className="font-weight-bold" href="/">My List</Nav.Link>
                         </Nav>
                         <span className="d-flex align-items-center">
-                           
                             <FormControl
                                 placeholder="Search and press enter"
                                 aria-label="search"
@@ -56,54 +55,3 @@ class NavBar extends Component {
 
 export default NavBar;
 
-
-
-//   
-
-  
-
-//     render() {
-//         return (
-//             <div fixed>
-//                 <Navbar bg="dark" variant="dark" expand="lg" >
-//                     <Navbar.Brand href=""></Navbar.Brand>
-//                     <Navbar.Toggle aria-controls="navbarScroll" />
-//                     <Navbar.Collapse id="navbarScroll">
-//                         <Nav
-//                             className="mr-auto my-2 my-lg-0"
-//                             style={{ maxHeight: '100px' }}
-//                             navbarScroll
-//                         >
-
-//                             <Nav.Link href="#home">Home</Nav.Link>
-//                             <Nav.Link href="#features">TV Show</Nav.Link>
-//                             <Nav.Link href="#movies">Movies</Nav.Link>
-//                             <Nav.Link href="#recentlyAdded">Recently Added</Nav.Link>
-//                             <Nav.Link href="#myList">My List</Nav.Link>
-//                         </Nav>
-
-//                         <Nav className="d-flex align-items-center">
-                           
-//                                 <FormControl type="text" placeholder="Search" className="mr-sm-2"
-//                                     style={{display:this.state.display? "block":"none",borderRadius:"25px",height:"30px"}}
-//                                     onKeyDown={this.SearchStringHandler}
-//                                     onChange={this.SearchStringHandler}
-//                                     value={this.state.searchQuery}  />
-//                                 <Nav.Link href="#features" onClick={()=>this.setState({display: !this.state.display})}><i className="bi bi-search"></i></Nav.Link>
-//                                 <div className="d-flex align-items-center">
-//                                     <Nav.Link href="#features">KIDS</Nav.Link>
-//                                     <Nav.Link href="#bellIcon"><i className=" text-white bi bi-bell-fill"></i> </Nav.Link>
-//                                     <Nav.Link href="#pricing"><Image src={user} width="40px" /></Nav.Link>
-//                                 </div>
-                            
-//                         </Nav>
-//                     </Navbar.Collapse>
-//                 </Navbar>
-//                 {/* <Section title={this.state.searchQuery}/> */}
-               
-//             </div>
-//         )
-//     }
-// }
-
-// export default NavBar;
