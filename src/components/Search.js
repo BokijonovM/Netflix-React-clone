@@ -35,7 +35,7 @@ class Search extends Component {
         return (
             <Container className="xtra-topMargin px-0 mb-5">
                 <Row>
-                    <h2 className="px-4 ml-2 align-items-center">{this.props.title}</h2>
+                    <h2 className="px-4 ml-2 align-items-center">{this.props.Title}</h2>
                     <Form inline>
                         <FormControl type="text" placeholder="Search" className="mr-sm-2" onChange={(e) => this.searchmovies(e)} />
                         <Button variant="outline-success">Search</Button>

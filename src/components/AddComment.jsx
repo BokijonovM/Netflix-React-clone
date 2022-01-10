@@ -72,7 +72,7 @@ export default class AddComment extends Component {
     render() {
         return (
             <div className="ml-2">
-                <h2 className="px-4 ml-2 align-items-center">{this.props.title}</h2>
+                <h2 className="px-4 ml-2 align-items-center">{this.props.Title}</h2>
                 <Form onSubmit={this.sendForm} className="justify-content-center flex-column" inline>
                     <Form.Group className="mb-3 d-flex flex-column justify-content-center" controlId="exampleForm.ControlTextarea1">
                         <Form.Label>Leave a comment</Form.Label>

@@ -14,7 +14,7 @@ export default class Section extends React.Component {
     componentDidMount = async () => {
         try {
 
-            let movieRes = await fetch('http://www.omdbapi.com/?apikey=15c1c355&s=' + this.props.title)
+            let movieRes = await fetch('http://www.omdbapi.com/?apikey=15c1c355&s=' + this.props.Title)
 
             if (movieRes.ok) {
 
@@ -44,7 +44,7 @@ export default class Section extends React.Component {
             <>
                 <Container className="bodySectionBG px-4" fluid>
                     <h4 className="mb-n2 mt-2">
-                        {this.props.heading} Movies
+                        {this.props.Title} Movies
                     </h4>
                     <Row sm={1} md={2} lg={4} className="row-cols-1 px-3 row__posters">
                         {this.state.isLoading && (<Loading></Loading>)}

@@ -50,12 +50,12 @@ export default class CommentArea extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props.movie.title !== prevProps.movie.title) {
+        if (this.props.movie.Title !== prevProps.movie.Title) {
             this.getComments()
             this.setState({
                 commentList: [...this.state.commentList],
                 isLoading: false,
-                movieTitle: this.props.movie.title,
+                movieTitle: this.props.movie.Title,
                 errorHandle: false,
             })
         }
