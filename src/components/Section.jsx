@@ -14,7 +14,7 @@ export default class Section extends React.Component {
     componentDidMount = async () => {
         try {
 
-            let movieRes = await fetch('http://www.omdbapi.com/?apikey=15c1c355&s=' + this.props.Title)
+            let movieRes = await fetch('http://www.omdbapi.com/?apikey=15c1c355&s=' + this.props.title)
 
             if (movieRes.ok) {
 
