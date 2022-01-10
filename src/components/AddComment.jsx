@@ -1,76 +1,103 @@
-import React from 'react';
-import { Component } from "react"
-import { Form, Button } from 'react-bootstrap';
+import React, { Component } from 'react'
+import { Form, Button } from 'react-bootstrap'
+import StarRatings from 'react-star-ratings'
 
 
-class AddComment extends Component {
+export default class AddComment extends Component {
+
     state = {
-        comments: {
-            comment: "",
-            rate: "",
-            elementId: this.props.id
+        userReview1: {
+            comment: '',
+            rate: undefined,
+            elementId: this.props.movie.imdbID
         }
+
     }
 
-    handleInput = (property, value) => {
+
+    inputHandler = (key, value) => {
         this.setState({
-            comments: {
-                ...this.state.comments,
-                [property]: value
+            userReview1: {
+                ...this.state.userReview1,
+                [key]: value
             }
         })
+
+    }
+    getRate = (newRating) => {
+        this.setState({
+            userReview1: {
+                ...this.state.userReview1,
+                rate: newRating
+            }
+        })
+
     }
 
-    handleSubmit = async (event) => {
-        event.preventDefault()
-        try {
-            let response = await fetch("https://striveschool-api.herokuapp.com/api/comments/" + this.props.id, {
-                method: "POST",
-                body: JSON.stringify(this.state.comments),
-                headers: {
-                    "Content-Type": "application/JSON",
-                    "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWIwYWU1OTRjZmY1ZjAwMTU5MGJkYWYiLCJpYXQiOjE2Mzk2NjI1MjgsImV4cCI6MTY0MDg3MjEyOH0.M_W7mM03N1yeADR5Q0nbGPMaXiMh73U1VxH4uhVI160"
+    sendForm = async (e) => {
+        e.preventDefault()
+        await fetch('https://striveschool-api.herokuapp.com/api/comments/', {
+            method: 'POST',
+            body: JSON.stringify(this.state.userReview1),
+            headers: {
+                "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWIwYWU1OTRjZmY1ZjAwMTU5MGJkYWYiLCJpYXQiOjE2Mzk2NjI1MjgsImV4cCI6MTY0MDg3MjEyOH0.M_W7mM03N1yeADR5Q0nbGPMaXiMh73U1VxH4uhVI160",
+                "Content-Type": "application/json"
+            }
+        })
+
+        this.setState({
+            userReview1: {
+                ...this.state.userReview1,
+                comment: '',
+                rate: undefined
+
+            }
+        })
+        await this.props.getNewComments()
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (this.props.movie.imdbID !== prevProps.movie.imdbID) {
+            this.setState({
+                userReview1: {
+                    ...this.state.userReview1,
+                    elementId: this.props.movie.imdbID
                 }
             })
-            let data = await response.json()
-            this.setState({comments:data})
-            if(response.OK){
-                this.setState({comments:{
-                    comment: "",
-                    rate: "",
-                    elementId: this.props.id
-                }})
-                alert("Comments Submitted")
-            }
-        } catch (error) {
-            console.log(error)
         }
     }
 
 
-  
 
     render() {
         return (
+            <div className="ml-2">
+                <h2 className="px-4 ml-2 align-items-center">{this.props.title}</h2>
+                <Form onSubmit={this.sendForm} className="justify-content-center flex-column" inline>
+                    <Form.Group className="mb-3 d-flex flex-column justify-content-center" controlId="exampleForm.ControlTextarea1">
+                        <Form.Label>Leave a comment</Form.Label>
+                        <Form.Control onChange={(e) => this.inputHandler('comment', e.target.value)} value={this.state.userReview1.comment} required as="textarea" rows={4} style={{
+                            width: "300px"
+                        }} />
+                    </Form.Group>
+                    <div className="d-flex mb-4">
+                        <StarRatings
+                            rating={this.state.userReview1.rate}
+                            starRatedColor="yellow"
+                            starHoverColor="yellow"
+                            starEmptyColor="rgb(129 129 129)"
+                            changeRating={this.getRate}
+                            numberOfStars={5}
+                            name='rating'
+                            starDimension="26px"
+                            starSpacing="6px"
+                            required
+                        />
+                    </div>
+                    <Button type="submit" variant="info">Add a comment</Button>
+                </Form>
 
-            <div onSubmit={this.handleSubmit}>
-
-                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                    <Form.Control as="textarea" rows={2} value={this.state.comments.comment}
-                        onChange={e => this.handleInput("comment", e.target.value)} placeholder="Add Comment"/>
-                </Form.Group>
-                <Form.Check inline label="2" name="group" type="radio" value="2" id="inline-radio-2" onClick={e => this.handleInput("rate", e.target.value)}/>
-                <Form.Check inline label="1" name="group" type="radio" value="1" id="inline-radio-1" onClick={e => this.handleInput("rate", e.target.value)}/>
-                <Form.Check inline label="3" name="group" type="radio" value="3" id="inline-radio-3" onClick={e => this.handleInput("rate", e.target.value)}/>
-                <Form.Check inline label="4" name="group" type="radio" value="4" id="inline-radio-4" onClick={e => this.handleInput("rate", e.target.value)}/>
-                <Form.Check inline label="5" name="group" type="radio" value="5" id="inline-radio-5" onClick={e => this.handleInput("rate", e.target.value)}/>
-        
-                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                    <Button variant="primary" className="m-2" onClick={(event) => this.handleSubmit}> Submit</Button>
-                </Form.Group>
             </div>
-        );
+        )
     }
 }
-
-export default AddComment;
