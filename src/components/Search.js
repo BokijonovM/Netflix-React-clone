@@ -43,7 +43,7 @@ class Search extends Component {
                 </Row>
                 <div className="row row-cols-sm-2 row-cols-md-2 row-cols-lg-4 px-3">
 
-                    {this.state.search.movies.map((movie) => <Section getUserSelectedmovie={this.props.getUserSelectedmovie} getDisplayedmovie={this.props.getDisplayedmovie} key={movie.asin} theme={movie} />)}
+                    {this.state.search.movies.map((movie) => <Section getUserSelectedmovie={this.props.getUserSelectedmovie} getDisplayedmovie={this.props.getDisplayedmovie} key={movie.imdbID} theme={movie} />)}
                 </div>
             </Container>
         );
