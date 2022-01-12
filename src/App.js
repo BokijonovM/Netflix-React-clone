@@ -5,6 +5,7 @@ import NavBar from "./components/Navbar";
 import MyFooter from "./components/MyFooter";
 import TvShows from './components/TvShows'
 import Section from './components/Section'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 class App extends Component {
   state = {
@@ -30,10 +31,13 @@ class App extends Component {
 
   render() {
     return (
+      <Router>
       <div className="App">
         
       <NavBar showSearchResult ={this.showSearchResult}/>
-      <TvShows />
+      <Routes>
+        <Route path='/tv-shows' element={<TvShows />}/>
+      </Routes>
 
         
       {this.state.search && (
@@ -58,6 +62,7 @@ class App extends Component {
               
   
       </div>
+      </Router>
     );
 
   }

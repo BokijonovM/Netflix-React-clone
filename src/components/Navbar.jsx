@@ -2,6 +2,7 @@ import { Component } from "react";
 import { Navbar, Nav, InputGroup, FormControl, Image } from "react-bootstrap";
 import brand from '../brand.png';
 import user from '../user.png';
+import { Link } from 'react-router-dom'
 class NavBar extends Component {
   state = {
     searchString: "",
@@ -26,8 +27,10 @@ class NavBar extends Component {
                         <Nav className="mr-auto">
                             <Nav.Link active className="font-weight-bold" href="/">
                             Home</Nav.Link>
-                            <Nav.Link className="font-weight-bold" href="/">
-                            TV Shows</Nav.Link>
+                            <Link to='/tv-shows'>
+                              <div className="font-weight-bold">
+                              TV Shows</div>
+                            </Link>
                             <Nav.Link className="font-weight-bold" href="/"> Movies </Nav.Link>
                             <Nav.Link className="font-weight-bold" href="/">Recently Added</Nav.Link>
                             <Nav.Link className="font-weight-bold" href="/">My List</Nav.Link>
