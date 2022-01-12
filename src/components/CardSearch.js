@@ -3,6 +3,7 @@ import { Card, Button} from 'react-bootstrap'
 import  Modal from 'react-bootstrap/Modal'
 import AddComment from './AddComment'
 import CommentsList from './CommentsList'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import './style.css'
 
 
@@ -15,6 +16,13 @@ export default class CardSearch extends Component {
         showComments:false
     }
 
+    changeRouter = () => {
+        const location = useLocation()
+        const navigate = useNavigate()
+
+        navigate(location.pathname === '/movieDetail/' + this.props.movie.Title)
+    }
+
     commentsDisplay = () => {
         this.setState({
             showPrice: null,
@@ -23,6 +31,7 @@ export default class CardSearch extends Component {
             isClicked: !this.state.isClicked
 
         })
+        console.log(this.props.movie)
     }
     // onDoubleClickF = () => {
     //     this.setState({
@@ -40,8 +49,8 @@ export default class CardSearch extends Component {
 
     render() {
         return (
-            <Card className={this.state.cardClass} style={{maxWidth:"18rem"}}>
-                <Card.Img onClick={this.showComments} className="img-poster align-self-center" variant="top" src={this.props.movie.Poster} />
+            <Card  className={this.state.cardClass} style={{maxWidth:"18rem"}}>
+                <Card.Img onClick={this.changeRouter}  className="img-poster align-self-center" variant="top" src={this.props.movie.Poster} />
                 <div className="position-relative">
                     <Card.Body className="d-flex flex-column pb-0 pt-2 px-0 justify-content-between w-100 position-absolute">
                         {this.state.isClicked && <Card.Title className="mb-2 px-2"> <h6>{this.props.movie.Title}</h6> <h6>{this.props.movie.imdbID}</h6></Card.Title>}
