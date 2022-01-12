@@ -3,8 +3,9 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import NavBar from "./components/Navbar";
 import MyFooter from "./components/MyFooter";
-import TvShows from './components/TvShows'
+// import TvShows from './components/TvShows'
 import MainSection from "./MainSection";
+import NotFound from "./components/NotFound";
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import TvRouter from './components/TvRuoter'
@@ -47,6 +48,7 @@ const App = () => {
             <Route path="/" element={<MainSection/> } />
 
             <Route path="/tv-shows" element={<TvRouter />} />
+            <Route path="*" element={<NotFound />} />
             
           </Routes>
 
