@@ -1,5 +1,6 @@
 import Section from './components/Section'
 import TvShows from './components/TvShows'
+import MovieDetails from './components/MovieDetails'
 
 import React from 'react'
 

@@ -6,7 +6,7 @@ import MyFooter from "./components/MyFooter";
 // import TvShows from './components/TvShows'
 import MainSection from "./MainSection";
 import NotFound from "./components/NotFound";
-
+import MovieDetails from "./components/MovieDetails";
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import TvRouter from './components/TvRuoter'
 import { useState } from 'react';
@@ -46,15 +46,12 @@ const App = () => {
 
           <Routes>
             <Route path="/" element={<MainSection/> } />
-
             <Route path="/tv-shows" element={<TvRouter />} />
+            <Route path="/details/:movieID" element={<MovieDetails />} />
             <Route path="*" element={<NotFound />} />
-            
           </Routes>
 
           
-          
-           
 
           <MyFooter />
         </div>
