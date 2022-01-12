@@ -4,7 +4,7 @@ import  Modal from 'react-bootstrap/Modal'
 import AddComment from './AddComment'
 import CommentsList from './CommentsList'
 import './style.css'
-
+import {Link} from 'react-router-dom'
 
 export default class CardSearch extends Component {
     state = {
@@ -42,7 +42,10 @@ export default class CardSearch extends Component {
         return (
             <Card className={this.state.cardClass} style={{maxWidth:"18rem"}}>
                 {/* onClick={this.showComments} */}
-                <Card.Img  className="img-poster align-self-center" variant="top" src={this.props.movie.Poster} />
+                <Link to={"/details/" + this.props.movie.imdbID}>
+                    <Card.Img style={{height: "300px"}}  className="img-poster align-self-center" variant="top" src={this.props.movie.Poster} />
+                </Link>
+                
                 <div className="position-relative">
                     <Card.Body className="d-flex flex-column pb-0 pt-2 px-0 justify-content-between w-100 position-absolute">
                         {this.state.isClicked && <Card.Title className="mb-2 px-2"> <h6>{this.props.movie.Title}</h6> <h6>{this.props.movie.imdbID}</h6></Card.Title>}
