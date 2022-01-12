@@ -49,7 +49,7 @@ const App = () => {
             <Route path="/" element={<MainSection/> } />
 
             <Route path="/tv-shows" element={<TvRouter />} />
-            <Route path="/details/:movieID" element={<MovieDetails />} />
+            <Route path='/details/:movieID' element={<MovieDetails/>}></Route>
             <Route path="*" element={<NotFound />} />
             
           </Routes>
