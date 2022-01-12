@@ -1,25 +1,33 @@
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import NavBar from "./components/Navbar";
 import MyFooter from "./components/MyFooter";
 import TvShows from './components/TvShows'
-import Section from './components/Section'
+import MainSection from "./MainSection";
 
-class App extends Component {
-  state = {
-    searchResult: [],
-    search: ""
-  }
-  showSearchResult = async (searchQuery) => {
-    this.setState({ search: searchQuery })
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import TvRouter from './components/TvRuoter'
+import { useState } from 'react';
+
+const App = () => {
+  // state = {
+  //   searchResult: [],
+  //   search: ""
+  // }
+
+  const [searchResult, setSearchResult] = useState([])
+  const [search, setSearch] = useState("")
+
+  const showSearchResult = async (searchQuery) => {
+    setSearch({ searchQuery })
     try {
         let response = await fetch("http://www.omdbapi.com/?apikey=82ebb69a&s=" + searchQuery, {
             method: "GET"
         })
         let data = await response.json()
-        this.setState({searchResult:data})
-        this.setState({search:searchQuery})
+        setSearchResult({data})
+        setSearch({searchQuery})
         console.log(data)
       
 
@@ -28,39 +36,30 @@ class App extends Component {
     }
   }
 
-  render() {
+
     return (
-      <div className="App">
-        
-      <NavBar showSearchResult ={this.showSearchResult}/>
-      <TvShows />
+      <BrowserRouter>
+        <div className="App">
+          
+          <NavBar />
 
-        
-      {this.state.search && (
-        <>
-            <Section
-              heading="Search Results" title={this.state.search} />
-            </>
-      ) }
+          <Routes>
+            <Route path="/" element={<MainSection/> } />
 
-            {!this.state.search &&
-             
-              (<>
-                <Section heading="Harry Potter" title="Harry Potter"/>
-                <Section heading="Marvel" title="Marvel"/>
-                <Section heading="Lord of the Rings" title="Lord of the Rings"/>
-                <Section heading="Horror" title="Horror"/>
-              </>)}
-                <MyFooter />
-                
-                
-      
-              
-  
-      </div>
+            <Route path="/tv-shows" element={<TvRouter />} />
+            
+          </Routes>
+
+          
+          
+           
+
+          <MyFooter />
+        </div>
+      </BrowserRouter>
     );
 
-  }
+  
 }
 
 export default App;

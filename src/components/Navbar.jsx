@@ -26,7 +26,7 @@ class NavBar extends Component {
                         <Nav className="mr-auto">
                             <Nav.Link active className="font-weight-bold" href="/">
                             Home</Nav.Link>
-                            <Nav.Link className="font-weight-bold" href="/">
+                            <Nav.Link className="font-weight-bold" href="/tv-shows">
                             TV Shows</Nav.Link>
                             <Nav.Link className="font-weight-bold" href="/"> Movies </Nav.Link>
                             <Nav.Link className="font-weight-bold" href="/">Recently Added</Nav.Link>
