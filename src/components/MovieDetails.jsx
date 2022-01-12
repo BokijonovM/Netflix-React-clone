@@ -62,7 +62,7 @@ const MovieDetails = () => {
                     : film
                         ? (
                             <Row>
-                                <Col className="justify-content-start">
+                                <Col className="d-flex flex-column align-items-start">
                                     <img className="my-4" src={film.Poster} alt="film" />
                                     <h2>{film.Title}</h2>
                                     <p className='mb-0'>Actors: {film.Actors}</p>
