@@ -10,6 +10,7 @@ import NotFound from "./components/NotFound";
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import TvRouter from './components/TvRuoter'
 import { useState } from 'react';
+import MovieDetails from './components/MovieDetails'
 
 const App = () => {
   // state = {
@@ -48,6 +49,7 @@ const App = () => {
             <Route path="/" element={<MainSection/> } />
 
             <Route path="/tv-shows" element={<TvRouter />} />
+            <Route path="/details/:movieID" element={<MovieDetails />} />
             <Route path="*" element={<NotFound />} />
             
           </Routes>
