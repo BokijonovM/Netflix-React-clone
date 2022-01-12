@@ -5,6 +5,7 @@ import NavBar from "./components/Navbar";
 import MyFooter from "./components/MyFooter";
 import TvShows from './components/TvShows'
 import Section from './components/Section'
+import MovieDetails from './components/MovieDetails';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 class App extends Component {
@@ -37,6 +38,7 @@ class App extends Component {
       <NavBar showSearchResult ={this.showSearchResult}/>
       <Routes>
         <Route path='/tv-shows' element={<TvShows />}/>
+        <Route path='/movieDetail/:movieID' element={<MovieDetails />} />
       </Routes>
 
         
