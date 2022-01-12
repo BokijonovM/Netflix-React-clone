@@ -62,11 +62,11 @@ const MovieDetails = () => {
                     : film
                         ? (
                             <Row>
-                                <Col>
-                                    <img src={film.Poster} alt="film" />
+                                <Col className="justify-content-start">
+                                    <img className="my-4" src={film.Poster} alt="film" />
                                     <h2>{film.Title}</h2>
-                                    <p>{film.Actors}</p>
-                                    <strong>{film.Awards}</strong>
+                                    <p className='mb-0'>Actors: {film.Actors}</p>
+                                    <p className="text-muted">Writer: {film.Writer}</p>
                                 </Col>
                             </Row>
                         )
