@@ -1,8 +1,9 @@
 import React, {useState} from 'react'
 import {Form, Button, Col, Row} from 'react-bootstrap'
-import {Link} from 'react-router-dom'
+import {Link, useLocation} from 'react-router-dom'
 
 function Register() {
+    // const location = useLocation()
 
     const [name, setName] = useState('')
     const [ surname, setSurname] = useState('')
@@ -64,7 +65,7 @@ function Register() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (name === '' || email === '' || password === '') {
+        if (name === '' || email === '' || password === '' || surname === '' || postal ==='' || city === '' || street === '' || birth === '') {
         setError(true);
         } else {
         setSubmitted(true);
@@ -160,12 +161,15 @@ function Register() {
                                 <Form.Control onChange={handleBirth} value={birth} required type="date" placeholder="Enter your street address" />
                         </Form.Group>
                         </div>
-                        
+
                         <div className='register-div d-flex justify-content-center'>
-                            
+                            <a href='/'>
                                 <Button onClick={handleSubmit} variant="primary" type="submit">
                                     Submit
                                 </Button>
+                            </a>
+                            
+                                
                         </div>
                         
                            
