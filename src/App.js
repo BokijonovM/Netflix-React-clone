@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { useState, useEffect } from 'react';
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import NavBar from "./components/Navbar";
@@ -10,34 +11,51 @@ import MovieDetails from './components/MovieDetails';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Registration from './components/Registration';
 
-class App extends Component {
-  state = {
-    searchResult: [],
-    search: ""
-  }
-  showSearchResult = async (searchQuery) => {
-    this.setState({ search: searchQuery })
+const App = () => {
+  const [formValue, setformValue] = useState({
+        name: '',
+        surname: '',
+        email: '',
+        password: '',
+        year: null,
+        adress: '',
+        city: '',
+        postalCode: '',
+        cardNumber: ''
+
+})
+
+  const [searchResult, setsearchResult] = useState([])
+  const [search, setSearch] = useState('')
+
+  useEffect( () => {
+    const showSearchResult = async (searchQuery) => {
+      setSearch(searchQuery)
     try {
         let response = await fetch("http://www.omdbapi.com/?apikey=82ebb69a&s=" + searchQuery, {
             method: "GET"
         })
         let data = await response.json()
-        this.setState({searchResult:data})
-        this.setState({search:searchQuery})
+        setsearchResult(data)
+        setSearch(searchQuery)
         console.log(data)
       
 
     } catch (error) {
       console.log(error)
     }
-  }
+    }
+    showSearchResult()
+  }, [])
 
-  render() {
+
+
+
     return (
       <Router>
       <div className="App">
         
-      <NavBar showSearchResult ={this.showSearchResult}/>
+      <NavBar />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/tv-shows' element={<TvShows />}/>
@@ -54,9 +72,9 @@ class App extends Component {
       </div>
       
       </Router>
-    );
+    )
 
-  }
+  
 }
 
 export default App;

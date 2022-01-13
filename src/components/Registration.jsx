@@ -1,9 +1,12 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { useState } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import { Form, Button } from 'react-bootstrap'
 
 const Registration = () => {
+
+
     return (
         <div className='Registration'>
             <Container>
