@@ -72,7 +72,8 @@ function Register() {
         setSubmitted(true);
         setError(false);
         }
-         <ModalPage /> && navigate('/')
+        <ModalPage /> 
+        navigate('/')
     };
 
     
