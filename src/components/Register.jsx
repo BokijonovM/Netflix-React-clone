@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
 import {Form, Button, Col, Row} from 'react-bootstrap'
-import {Link, useLocation} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 
 function Register() {
-    // const location = useLocation()
+    const navigate = useNavigate()
 
     const [name, setName] = useState('')
     const [ surname, setSurname] = useState('')
@@ -71,7 +71,15 @@ function Register() {
         setSubmitted(true);
         setError(false);
         }
+        navigate('/')
     };
+
+    
+    // async function handleSubmit(event){
+    //     event.preventDefault();
+    //     await submitForm(event.target);
+    //     navigate('/', {replace: true})
+    // }
 
 
 
@@ -104,7 +112,7 @@ function Register() {
 
     return (
         <div>
-            <h2 className='pl-5 mt-4 mb-4'>Welcome to Login page</h2>
+            <h2 className=' my-4 d-flex justify-content-center'>Welcome to Login page</h2>
             <div className="messages">
                 {errorMessage()}
                 {successMessage()}
@@ -163,11 +171,11 @@ function Register() {
                         </div>
 
                         <div className='register-div d-flex justify-content-center'>
-                            <a href='/'>
-                                <Button onClick={handleSubmit} variant="primary" type="submit">
+                           
+                                <Button  onClick={handleSubmit} disabled={!name || !surname || !postal || !password || !street || !email || !city || !birth } variant="primary" type="submit">
                                     Submit
                                 </Button>
-                            </a>
+                            
                             
                                 
                         </div>
