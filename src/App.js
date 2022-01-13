@@ -9,8 +9,9 @@ import NotFound from "./components/NotFound";
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import TvRouter from './components/TvRuoter'
-import { useState } from 'react';
+// import { useState } from 'react';
 import MovieDetails from './components/MovieDetails'
+import Register from "./components/Register";
 
 const App = () => {
   // state = {
@@ -18,25 +19,25 @@ const App = () => {
   //   search: ""
   // }
 
-  const [searchResult, setSearchResult] = useState([])
-  const [search, setSearch] = useState("")
+  // const [searchResult, setSearchResult] = useState([])
+  // const [search, setSearch] = useState("")
 
-  const showSearchResult = async (searchQuery) => {
-    setSearch({ searchQuery })
-    try {
-        let response = await fetch("http://www.omdbapi.com/?apikey=82ebb69a&s=" + searchQuery, {
-            method: "GET"
-        })
-        let data = await response.json()
-        setSearchResult({data})
-        setSearch({searchQuery})
-        console.log(data)
+  // const showSearchResult = async (searchQuery) => {
+  //   setSearch({ searchQuery })
+  //   try {
+  //       let response = await fetch("http://www.omdbapi.com/?apikey=82ebb69a&s=" + searchQuery, {
+  //           method: "GET"
+  //       })
+  //       let data = await response.json()
+  //       setSearchResult({data})
+  //       setSearch({searchQuery})
+  //       console.log(data)
       
 
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
 
 
     return (
@@ -50,6 +51,7 @@ const App = () => {
 
             <Route path="/tv-shows" element={<TvRouter />} />
             <Route path='/details/:movieID' element={<MovieDetails/>}></Route>
+            <Route path='/register' element={<Register/>} />
             <Route path="*" element={<NotFound />} />
             
           </Routes>

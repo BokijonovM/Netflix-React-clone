@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Navbar, Nav, InputGroup, FormControl, Image } from "react-bootstrap";
+import { Navbar, Nav, Button, FormControl, Image } from "react-bootstrap";
 import brand from '../brand.png';
 import user from '../user.png';
 class NavBar extends Component {
@@ -47,6 +47,8 @@ class NavBar extends Component {
                             <Nav.Link href="#bellIcon"><i className=" text-white bi bi-bell-fill"></i> </Nav.Link>
                             <Nav.Link href="#pricing"><Image src={user} width="40px" /></Nav.Link>
                         </span>
+                        <a href='/register'><Button className='shadow-none border-0' variant="primary">LOG IN</Button></a>
+                        
                         </Navbar.Collapse>
                     </Navbar>
     );
