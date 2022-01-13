@@ -114,7 +114,7 @@ const MovieDetails = () => {
                                                 <h3>Comments</h3>
                                                 {comment.map((c) => (
                                                 <li className="my-3" key={c.elementId}>
-                                                    <p>{c.comment}  {c.rate}</p>
+                                                    <p><span className='text-muted pr-2'>Comment:</span>{c.comment}  <span className='text-muted pl-5 pr-2'>Rate:</span>{c.rate}</p>
                                                     
                                                     
                                                 </li>
