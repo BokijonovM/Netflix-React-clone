@@ -8,19 +8,20 @@ const MovieDetails = () => {
     console.log('PARAMS!!', typeof params.movieID)
 
     const [film, setFilm] = useState(null)
+    const [comment, setComment] = useState(null)
 
-     useEffect(() => {
-        // I have the pastaId in the url! let's grab it back with params
-        // const movieID = params.movieID
-        // const pastaDish = dishes.find(pasta => pasta.id.toString() === pastaId)
-        // // pastaDish now hopefully is an object with all the details about the right pasta I clicked on!
-        // console.log(pastaDish)
-        // setTimeout(() => {
-        //     setPasta(pastaDish)
-        // }, 1000)
+    //  useEffect(() => {
+    //     I have the pastaId in the url! let's grab it back with params
+    //     const movieID = params.movieID
+    //     const pastaDish = dishes.find(pasta => pasta.id.toString() === pastaId)
+    //     // pastaDish now hopefully is an object with all the details about the right pasta I clicked on!
+    //     console.log(pastaDish)
+    //     setTimeout(() => {
+    //         setPasta(pastaDish)
+    //     }, 1000)
 
-        // fetchMovie()
-    }, [])
+    //     fetchMovie()
+    // }, [])
 
     // const movieId = params.movieID
 
@@ -40,38 +41,94 @@ const MovieDetails = () => {
                 
             
             } else {
-               console.log("Sorry error")
+               console.log("Sorry movie error")
             }}
 
             catch (err) {
-                console.log(err)
+                // console.log(err)
             }
 
         }
+        const fetchComment = async() => {
+            try {
+                // e.preventDefault()
+                let response = await fetch("https://striveschool-api.herokuapp.com/api/comments/" + params.movieID, {
+                    // method: "GET",
+                    headers: {
+                        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWIwYjA3YTRjZmY1ZjAwMTU5MGJkYjMiLCJpYXQiOjE2NDIwNDMxNTQsImV4cCI6MTY0MzI1Mjc1NH0.DjwFo28aXHGzjOHfEnj98qJ4unczJzZ5D4_PD9OeBVA"
+                    }
+                })
+                if(response.ok){
+                    let data = await response.json()
+                    console.log(data)
+                    setComment(data)
+                }else{
+                    console.log("Sorry comment error")
+                }
+                
+            }catch (err) {
+                console.log(err)
+            }
+        }
         fetchMovie()
-    })
+        fetchComment()
+    }, [params.movieID])
 
     return(
         <div>
             <Container>
-                {
-                  typeof film === 'undefined'
-                    ? (
-                        <h1>404 - Movie NOT FOUND</h1>
-                    )
-                    : film
-                        ? (
-                            <Row>
-                                <Col className="d-flex flex-column align-items-start">
-                                    <img className="my-4" src={film.Poster} alt="film" />
-                                    <h2>{film.Title}</h2>
-                                    <p className='mb-0'>Actors: {film.Actors}</p>
-                                    <p className="text-muted">Writer: {film.Writer}</p>
-                                </Col>
-                            </Row>
-                        )
-                        : <h1>LOADING...</h1>
-            }
+                <Row sm={1} md={1} lg={2}>
+                    <Col>
+                        {
+                        typeof film === 'undefined'
+                            ? (
+                                <h1>404 - Movie NOT FOUND</h1>
+                            )
+                            : film
+                                ? (
+                                    <Row>
+                                        <Col className="d-flex flex-column align-items-start">
+                                            <img className="my-4" src={film.Poster} alt="film" />
+                                            <h2 style={{textAlign: "start"}}>{film.Title}</h2>
+                                            <p style={{textAlign: "start"}} className='mb-0'>Actors: {film.Actors}</p>
+                                            <p style={{textAlign: "start"}} className="text-muted">Writer: {film.Writer}</p>
+                                        </Col>
+                                        
+                                    </Row>
+                                )
+                                : <h1>LOADING...</h1>
+                    }
+
+                     </Col>
+                     <Col>
+                     {
+                        typeof comment === 'undefined'
+                            ? (
+                                <h1>404 - Comment NOT FOUND</h1>
+                            )
+                            : comment
+                                ? (
+                                    <Row>
+                                        <Col className="mt-4 d-flex flex-column align-items-start">
+                                            <ul style={{ listStyleType: "none" }}>
+                                                <h3>Comments</h3>
+                                                {comment.map((c) => (
+                                                <li className="my-3" key={c.elementId}>
+                                                    <p>{c.comment}  {c.rate}</p>
+                                                    
+                                                    
+                                                </li>
+                                                ))}
+                                            </ul>
+                                        </Col>
+                                    </Row>
+                                )
+                                : <h1>LOADING...</h1>
+                    }
+
+                     </Col>
+                </Row>
+                
         </Container>
         </div>
 
