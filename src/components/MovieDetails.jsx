@@ -1,6 +1,7 @@
 import { Col, Container, Row } from "react-bootstrap"
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import AddMovieComment from "./AddMovieComment"
 
 const MovieDetails = () => {
      const params = useParams()
@@ -109,8 +110,8 @@ const MovieDetails = () => {
                             : comment
                                 ? (
                                     <Row>
-                                        <Col className="mt-4 d-flex flex-column align-items-start">
-                                            <ul style={{ listStyleType: "none" }}>
+                                        <Col className="pl-0 mt-4 d-flex flex-column align-items-start">
+                                            <ul  style={{ listStyleType: "none", paddingLeft: "15px"}}>
                                                 <h3>Comments</h3>
                                                 {comment.map((c) => (
                                                 <li className="my-3" key={c.elementId}>
@@ -120,6 +121,10 @@ const MovieDetails = () => {
                                                 </li>
                                                 ))}
                                             </ul>
+                                            <div style={{paddingLeft: "10px"}}>
+                                                <AddMovieComment/>
+                                            </div>
+                                            
                                         </Col>
                                     </Row>
                                 )
