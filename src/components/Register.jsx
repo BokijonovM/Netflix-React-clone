@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {Form, Button, Col, Row} from 'react-bootstrap'
 import {Link, useNavigate} from 'react-router-dom'
+import ModalPage from './ModalPage'
 
 function Register() {
     const navigate = useNavigate()
@@ -71,7 +72,7 @@ function Register() {
         setSubmitted(true);
         setError(false);
         }
-        navigate('/')
+         <ModalPage /> && navigate('/')
     };
 
     
@@ -112,7 +113,8 @@ function Register() {
 
     return (
         <div>
-            <h2 className=' my-4 d-flex justify-content-center'>Welcome to Login page</h2>
+           
+            <h2  className=' my-4 d-flex justify-content-center'>Welcome to Login page</h2>
             <div className="messages">
                 {errorMessage()}
                 {successMessage()}
@@ -172,9 +174,10 @@ function Register() {
 
                         <div className='register-div d-flex justify-content-center'>
                            
-                                <Button  onClick={handleSubmit} disabled={!name || !surname || !postal || !password || !street || !email || !city || !birth } variant="primary" type="submit">
+                                <Button  className='mr-5' onClick={handleSubmit} disabled={!name || !surname || !postal || !password || !street || !email || !city || !birth } variant="primary" type="submit">
                                     Submit
                                 </Button>
+                                <ModalPage />
                             
                             
                                 
