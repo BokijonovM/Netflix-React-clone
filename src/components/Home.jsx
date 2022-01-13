@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import NavBar from "./components/Navbar";
-import Home from "./components/Home"
-import MyFooter from "./components/MyFooter";
-import TvShows from './components/TvShows'
-import Section from './components/Section'
-import MovieDetails from './components/MovieDetails';
+import NavBar from "./Navbar";
+import MyFooter from "./MyFooter";
+import TvShows from './TvShows'
+import Section from './Section'
+import MovieDetails from './MovieDetails';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Registration from './components/Registration';
+import Registration from './Registration';
 
 class App extends Component {
   state = {
@@ -34,18 +32,25 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
       <div className="App">
         
-      <NavBar showSearchResult ={this.showSearchResult}/>
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/tv-shows' element={<TvShows />}/>
-        <Route path='/movieDetail/:movieID' element={<MovieDetails />} />
-        <Route path='/registration' element={<Registration />}/>
-      
-      </Routes>
-      <MyFooter />
+        
+      {this.state.search && (
+        <>
+            <Section
+              heading="Search Results" title={this.state.search} />
+            </>
+      ) }
+
+            {!this.state.search &&
+             
+              (<>
+                <Section heading="Harry Potter" title="Harry Potter"/>
+                <Section heading="Marvel" title="Marvel"/>
+                <Section heading="Lord of the Rings" title="Lord of the Rings"/>
+                <Section heading="Horror" title="Horror"/>
+              </>)}
+                <MyFooter />
                 
                 
       
@@ -53,7 +58,6 @@ class App extends Component {
                 
       </div>
       
-      </Router>
     );
 
   }
