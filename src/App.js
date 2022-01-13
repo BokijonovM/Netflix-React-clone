@@ -60,7 +60,7 @@ const App = () => {
         <Route path='/' element={<Home />} />
         <Route path='/tv-shows' element={<TvShows />}/>
         <Route path='/movieDetail/:movieID' element={<MovieDetails />} />
-        <Route path='/registration' element={<Registration />}/>
+        <Route path='/registration' element={<Registration formValue={formValue} setformValue={setformValue} />}/>
       
       </Routes>
       <MyFooter />
