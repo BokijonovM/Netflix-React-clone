@@ -28,12 +28,15 @@ class NavBar extends Component {
                             <Nav.Link active className="font-weight-bold" href="/">
                             Home</Nav.Link>
                             <Link to='/tv-shows'>
-                              <div className="font-weight-bold">
+                              <div className="font-weight-bold nav-link">
                               TV Shows</div>
                             </Link>
                             <Nav.Link className="font-weight-bold" href="/"> Movies </Nav.Link>
                             <Nav.Link className="font-weight-bold" href="/">Recently Added</Nav.Link>
                             <Nav.Link className="font-weight-bold" href="/">My List</Nav.Link>
+                            <Link to='/registration'>
+                              <div className="font-weight-bold nav-link" >Registration</div>
+                            </Link>
                         </Nav>
                         <span className="d-flex align-items-center">
                             <FormControl
