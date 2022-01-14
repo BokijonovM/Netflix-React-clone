@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { Form, Button, Col, Row } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
-import ModalPage from "./ModalPage";
+import { Form, Button, Col, Row, Modal } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
   const navigate = useNavigate();
@@ -17,6 +16,11 @@ function Register() {
 
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState(false);
+
+  const [show, setShow] = useState(false);
+  const handleModal = () => {
+    setShow(true);
+  };
 
   const handleName = e => {
     setName(e.target.value);
@@ -74,7 +78,6 @@ function Register() {
       setSubmitted(true);
       setError(false);
     }
-    <ModalPage />;
     navigate("/");
   };
 
@@ -114,6 +117,10 @@ function Register() {
       </div>
     );
   };
+
+  //   state = {
+  //       show: false,
+  //     };
 
   return (
     <div>
@@ -227,7 +234,9 @@ function Register() {
             <div className="register-div d-flex justify-content-center">
               <Button
                 className="mr-5"
-                onClick={handleSubmit}
+                // onClick={handleSubmit}
+                // onClick={setModalIsOpenToTrue}\
+
                 disabled={
                   !name ||
                   !surname ||
@@ -239,15 +248,44 @@ function Register() {
                   !birth
                 }
                 variant="primary"
-                type="submit"
+                // type="submit"
+                onClick={() => {
+                  handleModal();
+                }}
               >
                 Submit
               </Button>
-              <ModalPage />
+              {/* <ModalPage /> */}
             </div>
           </Col>
         </Row>
       </Form>
+
+      <Modal show={show}>
+        <Modal.Dialog style={{ width: "95%" }}>
+          <Modal.Header closeButton>
+            <Modal.Title>Is everything correct?</Modal.Title>
+          </Modal.Header>
+
+          <Modal.Body>
+            <p className="text-dark">Your info will be saved</p>
+          </Modal.Body>
+
+          <Modal.Footer className="d-flex justify-content-between">
+            <Button
+              onClick={() => {
+                setShow(false);
+              }}
+              variant="secondary"
+            >
+              Back
+            </Button>
+            <Button onClick={handleSubmit} href="/" variant="primary">
+              Confirm and register
+            </Button>
+          </Modal.Footer>
+        </Modal.Dialog>
+      </Modal>
     </div>
   );
 }
