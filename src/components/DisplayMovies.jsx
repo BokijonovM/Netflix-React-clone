@@ -1,14 +1,16 @@
-import React from 'react'
-import CardSearch from './CardSearch'
+import React from "react";
+import CardSearch from "./CardSearch";
 
 class DisplayMovies extends React.Component {
-    render() {
-        return (
-        <>
-            {
-            this.props.movieList.map(movie => <CardSearch key={movie.imdbID} movie={movie}></CardSearch>)}
-        </>);
-    }
+  render() {
+    return (
+      <>
+        {this.props.movieList.map(movie => (
+          <CardSearch key={movie.imdbID} movie={movie}></CardSearch>
+        ))}
+      </>
+    );
+  }
 }
 
 export default DisplayMovies;
