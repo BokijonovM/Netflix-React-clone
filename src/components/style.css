@@ -60,3 +60,6 @@
   align-content: center;
   flex-direction: column;
 }
+.add-new-form div {
+  width: 60vw;
+}

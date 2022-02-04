@@ -69,13 +69,18 @@ const OwnDetails = () => {
             ) : film ? (
               <Row>
                 <Col className="d-flex flex-column align-items-start">
-                  <img className="my-4" src={film.Poster} alt="film" />
+                  <img
+                    className="my-4"
+                    style={{ height: "500px", width: "350px" }}
+                    src={film.Poster}
+                    alt="film"
+                  />
                   <h2 style={{ textAlign: "start" }}>{film.Title}</h2>
                   <p style={{ textAlign: "start" }} className="mb-0">
-                    Actors: {film.Actors}
+                    Year: {film.Year}
                   </p>
                   <p style={{ textAlign: "start" }} className="text-muted">
-                    Writer: {film.Writer}
+                    Type: {film.Type}
                   </p>
                 </Col>
               </Row>
