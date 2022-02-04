@@ -52,3 +52,11 @@
   height: 50px;
   padding: 5px;
 }
+.add-new-form {
+  display: flex;
+  justify-content: center;
+  height: 70vh;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+}
