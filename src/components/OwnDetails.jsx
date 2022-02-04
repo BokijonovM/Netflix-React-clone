@@ -60,6 +60,16 @@ const OwnDetails = () => {
     fetchComment();
   }, [params.movieID]);
 
+  const downloadPost = e => {
+    try {
+      window.location.replace(
+        process.env.REACT_APP_OWN_MOVIE + "movies/download/" + params.movieID
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div>
       <Container>
@@ -95,7 +105,9 @@ const OwnDetails = () => {
           </Col>
           <Col>
             <div className="get-pdf-btn-div">
-              <Button variant="secondary">Get PDF</Button>
+              <Button onClick={e => downloadPost(e)} variant="secondary">
+                Get PDF
+              </Button>
             </div>
             {typeof comment === "undefined" ? (
               <h1>404 - Comment NOT FOUND</h1>
