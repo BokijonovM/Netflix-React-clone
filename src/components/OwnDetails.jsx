@@ -2,6 +2,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import AddMovieComment from "./AddMovieComment";
+import NewReview from "./NewReview";
 
 const OwnDetails = () => {
   const params = useParams();
@@ -71,7 +72,11 @@ const OwnDetails = () => {
                 <Col className="d-flex flex-column align-items-start">
                   <img
                     className="my-4"
-                    style={{ height: "500px", width: "350px" }}
+                    style={{
+                      height: "500px",
+                      width: "350px",
+                      objectFit: "cover",
+                    }}
                     src={film.Poster}
                     alt="film"
                   />
@@ -108,7 +113,7 @@ const OwnDetails = () => {
                     ))}
                   </ul>
                   <div style={{ paddingLeft: "10px" }}>
-                    <AddMovieComment />
+                    <NewReview />
                   </div>
                 </Col>
               </Row>
