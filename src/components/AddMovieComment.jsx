@@ -50,8 +50,7 @@ export default class AddMovieComment extends Component {
     //     this.sendForm()
     // }
     await fetch(
-      "https://striveschool-api.herokuapp.com/api/comments/" +
-        this.props.movieID,
+      process.env.REACT_APP_STRIVE_API + "api/comments/" + this.props.movieID,
       {
         method: "POST",
         body: JSON.stringify(this.state.userReview1),

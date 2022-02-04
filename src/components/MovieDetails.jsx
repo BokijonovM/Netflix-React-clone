@@ -2,14 +2,17 @@ import { Col, Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import AddMovieComment from "./AddMovieComment";
+import Loading from "./Loading";
 
 const MovieDetails = () => {
   const params = useParams();
   // params is ALWAYS going to be an object!
   console.log("PARAMS!!", typeof params.movieID);
 
-  const [film, setFilm] = useState(null);
-  const [comment, setComment] = useState(null);
+  const [film, setFilm] = useState([]);
+  const [comment, setComment] = useState([]);
+  const [ownMovie, setOwnMovie] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   //  useEffect(() => {
   //     I have the pastaId in the url! let's grab it back with params
@@ -48,8 +51,7 @@ const MovieDetails = () => {
       try {
         // e.preventDefault()
         let response = await fetch(
-          "https://striveschool-api.herokuapp.com/api/comments/" +
-            params.movieID,
+          process.env.REACT_APP_STRIVE_API + "api/comments/" + params.movieID,
           {
             // method: "GET",
             headers: {
@@ -61,6 +63,7 @@ const MovieDetails = () => {
           let data = await response.json();
           console.log(data);
           setComment(data);
+          setIsLoading(false);
         } else {
           console.log("Sorry comment error");
         }
@@ -68,6 +71,9 @@ const MovieDetails = () => {
         console.log(err);
       }
     };
+    // const fetchOwnMovie = async () => {
+    //     let res = await fetch(process.env.REACT_APP_OWN_MOVIE)
+    // }
     fetchMovie();
     fetchComment();
   }, [params.movieID]);
@@ -104,6 +110,7 @@ const MovieDetails = () => {
                 <Col className="pl-0 mt-4 d-flex flex-column align-items-start">
                   <ul style={{ listStyleType: "none", paddingLeft: "15px" }}>
                     <h3>Comments</h3>
+                    {isLoading && <Loading />}
                     {comment.map(c => (
                       <li className="my-3" key={c.elementId}>
                         <p>
@@ -164,7 +171,7 @@ export default MovieDetails;
 //     // const fetchComments = async () => {
 //     //   try {
 //     //     let response = await fetch(
-//     //       "https://striveschool-api.herokuapp.com/api/comments/" +
+//     //       process.env.REACT_APP_STRIVE_API + "api/comments/" +
 //     //         params.movieID,
 //     //       {
 //     //         headers: {

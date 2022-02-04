@@ -24,7 +24,7 @@ class AddComment extends Component {
     event.preventDefault();
     try {
       let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/comments/" + this.props.id,
+        process.env.REACT_APP_STRIVE_API + "api/comments/" + this.props.id,
         {
           method: "POST",
           body: JSON.stringify(this.state.comments),

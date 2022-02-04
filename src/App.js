@@ -7,11 +7,13 @@ import MyFooter from "./components/MyFooter";
 import MainSection from "./MainSection";
 import NotFound from "./components/NotFound";
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import TvRouter from './components/TvRuoter'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import TvRouter from "./components/TvRuoter";
 // import { useState } from 'react';
-import MovieDetails from './components/MovieDetails'
+import MovieDetails from "./components/MovieDetails";
 import Register from "./components/Register";
+import OwnDetails from "./components/OwnDetails";
+import NewFilm from "./components/NewFilm";
 
 const App = () => {
   // state = {
@@ -32,40 +34,32 @@ const App = () => {
   //       setSearchResult({data})
   //       setSearch({searchQuery})
   //       console.log(data)
-      
 
   //   } catch (error) {
   //     console.log(error)
   //   }
   // }
 
+  return (
+    <BrowserRouter>
+      <div className="App">
+        <NavBar />
 
-    return (
-      <BrowserRouter>
-        <div className="App">
-          
-          <NavBar />
+        <Routes>
+          <Route path="/" element={<MainSection />} />
 
-          <Routes>
-            <Route path="/" element={<MainSection/> } />
+          <Route path="/tv-shows" element={<TvRouter />} />
+          <Route path="/details/:movieID" element={<MovieDetails />}></Route>
+          <Route path="/detailsOwn/:movieID" element={<OwnDetails />}></Route>
+          <Route path="/register" element={<Register />} />
+          <Route path="/new" element={<NewFilm />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
 
-            <Route path="/tv-shows" element={<TvRouter />} />
-            <Route path='/details/:movieID' element={<MovieDetails/>}></Route>
-            <Route path='/register' element={<Register/>} />
-            <Route path="*" element={<NotFound />} />
-            
-          </Routes>
-
-          
-          
-           
-
-          <MyFooter />
-        </div>
-      </BrowserRouter>
-    );
-
-  
-}
+        <MyFooter />
+      </div>
+    </BrowserRouter>
+  );
+};
 
 export default App;
