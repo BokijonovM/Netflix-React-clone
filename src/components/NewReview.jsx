@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 
 function NewReview() {
   const params = useParams();
-  console.log("review id", params.movieID);
 
   const [comment, setComment] = useState("");
   const [rate, setRate] = useState("");

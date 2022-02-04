@@ -6,12 +6,9 @@ import NewReview from "./NewReview";
 
 const OwnDetails = () => {
   const params = useParams();
-  // params is ALWAYS going to be an object!
-  console.log("PARAMS!!", typeof params.movieID);
 
   const [film, setFilm] = useState([]);
   const [comment, setComment] = useState([]);
-  const [ownMovie, setOwnMovie] = useState([]);
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -19,12 +16,9 @@ const OwnDetails = () => {
         let movieRes = await fetch(
           process.env.REACT_APP_OWN_MOVIE + "movies/" + params.movieID
         );
-        console.log(movieRes);
 
         if (movieRes.ok) {
           let movies = await movieRes.json();
-          console.log(movies);
-          console.log("Own Details");
           setFilm(movies);
         } else {
           console.log("Sorry movie error");
@@ -44,7 +38,6 @@ const OwnDetails = () => {
         );
         if (response.ok) {
           let data = await response.json();
-          console.log("comment", data);
           setComment(data);
         } else {
           console.log("Sorry comment error");
