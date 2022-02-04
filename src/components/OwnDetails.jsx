@@ -1,4 +1,4 @@
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row, Button } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import AddMovieComment from "./AddMovieComment";
@@ -94,6 +94,9 @@ const OwnDetails = () => {
             )}
           </Col>
           <Col>
+            <div className="get-pdf-btn-div">
+              <Button variant="secondary">Get PDF</Button>
+            </div>
             {typeof comment === "undefined" ? (
               <h1>404 - Comment NOT FOUND</h1>
             ) : comment ? (

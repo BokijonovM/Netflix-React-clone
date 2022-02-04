@@ -63,3 +63,8 @@
 .add-new-form div {
   width: 60vw;
 }
+.get-pdf-btn-div {
+  display: flex;
+  justify-content: flex-start !important;
+  margin-top: 20px;
+}
