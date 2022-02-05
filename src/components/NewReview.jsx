@@ -6,7 +6,7 @@ function NewReview() {
   const params = useParams();
 
   const [comment, setComment] = useState("");
-  const [rate, setRate] = useState("");
+  const [rate, setRate] = useState("1");
   const [elementId, setElementId] = useState("");
   const handleSubmit = async e => {
     e.preventDefault();
