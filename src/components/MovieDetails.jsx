@@ -79,7 +79,7 @@ const MovieDetails = () => {
   }, [params.movieID]);
 
   return (
-    <div>
+    <div style={{minHeight:'80vh'}}>
       <Container>
         <Row sm={1} md={1} lg={2}>
           <Col>

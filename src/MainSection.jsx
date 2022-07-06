@@ -6,7 +6,7 @@ import React from "react";
 
 function MainSection({search}) {
   return (
-    <div>
+    <div style={{minHeight:'80vh'}}>
       <TvShows />
       {search.length>3? <Section heading="Search Result" title={search} /> :<>
       {/* <OwnMovie /> */}

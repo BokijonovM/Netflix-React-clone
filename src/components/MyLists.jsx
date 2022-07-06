@@ -2,10 +2,10 @@ import React from 'react'
 
 function MyLists() {
   return (
-    <div>
-        <h2>
+    <div  style={{minHeight:"80vh"}}>
+        
             The list is empty
-        </h2>
+      
         </div>
   )
 }

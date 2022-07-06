@@ -3,7 +3,7 @@ import Section from './Section'
 
 function Movies() {
   return (
-    <div>
+    <div style={{minHeight:'80vh'}}>
         <Section heading="movies" title="Movies" />
     </div>
   )

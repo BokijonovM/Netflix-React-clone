@@ -11,10 +11,10 @@ class NavBar extends Component {
   };
 
   searchHandler = e => {
-    
       this.props.setSearch(e.target.value)
-    
   };
+
+  
 
   render() {
 
@@ -27,12 +27,12 @@ class NavBar extends Component {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Link to="/">
+            <Link to="/" style={{textDecoration:"none"}} >
             <div className={`nav-link font-weight-bold ${window.location.pathname === "/"? "active":""}`} >
               Home
             </div>
             </Link>
-            <Link to="/tv-shows">
+            <Link to="/tv-shows" >
             <div   className={`nav-link font-weight-bold ${window.location.pathname === "/tv-shows"? "active":""}`} >
               TV Shows
             </div>

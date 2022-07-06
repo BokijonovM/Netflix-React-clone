@@ -58,7 +58,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<MainSection search={search} setSearch={setSearch} />} />
           <Route path="/movies" element={<Movies />} />
-          <Route path="/tv-shows" element={<TvShows />} />
+          <Route path="/tv-shows" element={<TvRouter/>} />
           <Route path="/my-lists" element={<MyLists />} />
           <Route path="/recently-added" element={<TvRouter />} />
           <Route path="/details/:movieID" element={<MovieDetails />}></Route>
