@@ -1,6 +1,8 @@
 import { Component } from "react";
 import { Navbar, Nav, Button, FormControl, Image } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import brand from "../brand.png";
+import withRouter from "../helper/withRouter";
 import user from "../user.png";
 class NavBar extends Component {
   state = {
@@ -9,15 +11,15 @@ class NavBar extends Component {
   };
 
   searchHandler = e => {
-    if (e.keyCode === 13) {
-      this.props.showSearchResult(this.state.searchString);
-    } else {
-      this.setState({ searchString: e.currentTarget.value });
-    }
+    
+      this.props.setSearch(e.target.value)
+    
   };
 
   render() {
+
     return (
+
       <Navbar variant="dark" expand="lg" style={{ backgroundColor: "black", position:'sticky', top:"0", zIndex:"3" }}>
         <Navbar.Brand href="/">
           <Image src={brand} style={{ width: "100px" }} fluid />{" "}
@@ -25,22 +27,32 @@ class NavBar extends Component {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link active className="font-weight-bold" href="/">
+            <Link to="/">
+            <div className={`nav-link font-weight-bold ${window.location.pathname === "/"? "active":""}`} >
               Home
-            </Nav.Link>
-            <Nav.Link className="font-weight-bold" href="/tv-shows">
+            </div>
+            </Link>
+            <Link to="/tv-shows">
+            <div   className={`nav-link font-weight-bold ${window.location.pathname === "/tv-shows"? "active":""}`} >
               TV Shows
-            </Nav.Link>
-            <Nav.Link className="font-weight-bold" href="/">
-              {" "}
-              Movies{" "}
-            </Nav.Link>
-            <Nav.Link className="font-weight-bold" href="/">
+            </div>
+            </Link>
+            <Link to="/movies">
+            <div  className={`nav-link font-weight-bold ${window.location.pathname === "/movies"? "active":""}`}>
+              Movies
+            </div>
+            </Link>
+            <Link to="/recently-added">
+
+            <div className={`nav-link font-weight-bold ${window.location.pathname === "/recently-added"? "active":""}`}>
               Recently Added
-            </Nav.Link>
-            <Nav.Link className="font-weight-bold" href="/">
+            </div>
+            </Link>
+            <Link to="my-lists">
+            <div className={`nav-link font-weight-bold ${window.location.pathname === "/my-list"? "active":""}`}>
               My List
-            </Nav.Link>
+            </div>
+            </Link>
           </Nav>
           <span className="d-flex align-items-center">
             <FormControl
@@ -52,9 +64,9 @@ class NavBar extends Component {
                 borderRadius: "25px",
                 height: "30px",
               }}
-              onKeyDown={this.searchHandler}
+              
               onChange={this.searchHandler}
-              value={this.state.searchString}
+              value={this.props.search}
             />
             <Nav.Link
               href="#features"
@@ -88,4 +100,4 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar;
+export default withRouter(NavBar);

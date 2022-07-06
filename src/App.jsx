@@ -14,6 +14,10 @@ import MovieDetails from "./components/MovieDetails";
 import Register from "./components/Register";
 import OwnDetails from "./components/OwnDetails";
 import NewFilm from "./components/NewFilm";
+import Movies from "./components/Movies";
+import MyLists from "./components/MyLists";
+import TvShows from "./components/TvShows";
+import { useEffect, useState } from "react";
 
 const App = () => {
   // state = {
@@ -22,17 +26,23 @@ const App = () => {
   // }
 
   // const [searchResult, setSearchResult] = useState([])
-  // const [search, setSearch] = useState("")
+  const [search, setSearch] = useState("")
 
-  // const showSearchResult = async (searchQuery) => {
-  //   setSearch({ searchQuery })
+  useEffect(() => {
+    // if(search.length < 3){
+    //   showSearchResult()
+    // }
+
+   },[search])
+
+
+  // const showSearchResult = async (search) => {
   //   try {
-  //       let response = await fetch("http://www.omdbapi.com/?apikey=82ebb69a&s=" + searchQuery, {
+  //       let response = await fetch("http://www.omdbapi.com/?apikey=82ebb69a&s=" + search, {
   //           method: "GET"
   //       })
   //       let data = await response.json()
   //       setSearchResult({data})
-  //       setSearch({searchQuery})
   //       console.log(data)
 
   //   } catch (error) {
@@ -43,12 +53,14 @@ const App = () => {
   return (
     <BrowserRouter>
       <div className="App">
-        <NavBar />
+        <NavBar search={search} setSearch={setSearch}/>
 
         <Routes>
-          <Route path="/" element={<MainSection />} />
-
-          <Route path="/tv-shows" element={<TvRouter />} />
+          <Route path="/" element={<MainSection search={search} setSearch={setSearch} />} />
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/tv-shows" element={<TvShows />} />
+          <Route path="/my-lists" element={<MyLists />} />
+          <Route path="/recently-added" element={<TvRouter />} />
           <Route path="/details/:movieID" element={<MovieDetails />}></Route>
           <Route path="/detailsOwn/:movieID" element={<OwnDetails />}></Route>
           <Route path="/register" element={<Register />} />
