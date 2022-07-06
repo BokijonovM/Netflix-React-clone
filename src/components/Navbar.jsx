@@ -18,7 +18,7 @@ class NavBar extends Component {
 
   render() {
     return (
-      <Navbar variant="dark" expand="lg" style={{ backgroundColor: "black" }}>
+      <Navbar variant="dark" expand="lg" style={{ backgroundColor: "black", position:'sticky', top:"0", zIndex:"3" }}>
         <Navbar.Brand href="/">
           <Image src={brand} style={{ width: "100px" }} fluid />{" "}
         </Navbar.Brand>

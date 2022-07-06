@@ -5,7 +5,7 @@ function TvRuoter() {
     return (
         <div>
             <h2 className='pl-4 py-4'>Welcome to TV Shows page</h2>
-            <Section heading="Harry Potter" title="Harry Potter"/>
+            <Section heading="Tv-show" title="Tv-show"/>
         </div>
     )
 }

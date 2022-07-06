@@ -8,7 +8,7 @@ function MainSection() {
   return (
     <div>
       <TvShows />
-      <OwnMovie />
+      {/* <OwnMovie /> */}
       <Section heading="Harry Potter" title="Harry Potter" />
       <Section heading="Marvel" title="Marvel" />
       <Section heading="Lord of the Rings" title="Lord of the Rings" />
